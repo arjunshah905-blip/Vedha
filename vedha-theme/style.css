@@ -1,0 +1,217 @@
+/*
+Theme Name: Vedha
+Theme URI: https://vedha.ind.in/
+Author: Vedha Consumer Solutions Pvt. Ltd.
+Author URI: https://vedha.ind.in/
+Description: Custom, lightweight, high-performance classic WordPress theme for Vedha home care and automobile care liquid formulations. Built with native WooCommerce support, block patterns, theme.json, accessible typography, schema markup, and zero bloated page builder dependencies.
+Version: 1.0.0
+Requires at least: 6.2
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: vedha
+Tags: e-commerce, custom-colors, custom-logo, custom-menu, featured-images, full-width-template, theme-options, translation-ready, block-patterns, accessibility-ready
+*/
+
+/* ==========================================================================
+   VEDHA THEME CORE TOKENS & RESET
+   ========================================================================== */
+
+:root {
+  --vedha-red: #D4161C;
+  --vedha-red-hover: #b81016;
+  --vedha-green: #14602F;
+  --vedha-green-hover: #0f4923;
+  --vedha-green-light: #e8f4ed;
+  --vedha-bg-neutral: #FAF9F6;
+  --vedha-surface-white: #FFFFFF;
+  --vedha-text-main: #1A1A1A;
+  --vedha-text-muted: #5A5A5A;
+  --vedha-text-subtle: #767676;
+  --vedha-border-subtle: #E5E5E5;
+  --vedha-border-medium: #D1D1D1;
+  --vedha-card-radius: 16px;
+  --vedha-btn-radius: 10px;
+  --vedha-input-radius: 8px;
+  --vedha-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --vedha-font-display: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --vedha-container-max: 1240px;
+  --vedha-header-height: 76px;
+}
+
+/* Accessible focus outline */
+*:focus-visible {
+  outline: 3px solid var(--vedha-green);
+  outline-offset: 2px;
+}
+
+html {
+  font-family: var(--vedha-font-sans);
+  color: var(--vedha-text-main);
+  background-color: var(--vedha-bg-neutral);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--vedha-bg-neutral);
+  color: var(--vedha-text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--vedha-green);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover, a:focus {
+  color: var(--vedha-green-hover);
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--vedha-font-display);
+  font-weight: 700;
+  color: var(--vedha-text-main);
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); letter-spacing: -0.015em; }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+h4 { font-size: 1.15rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.vedha-container {
+  width: 100%;
+  max-width: var(--vedha-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Button Component Styles */
+.vedha-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--vedha-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--vedha-btn-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.vedha-btn:hover {
+  text-decoration: none;
+}
+
+.vedha-btn-primary {
+  background-color: var(--vedha-green);
+  color: #ffffff;
+}
+
+.vedha-btn-primary:hover {
+  background-color: var(--vedha-green-hover);
+  color: #ffffff;
+}
+
+.vedha-btn-accent {
+  background-color: var(--vedha-red);
+  color: #ffffff;
+}
+
+.vedha-btn-accent:hover {
+  background-color: var(--vedha-red-hover);
+  color: #ffffff;
+}
+
+.vedha-btn-secondary {
+  background-color: var(--vedha-surface-white);
+  color: var(--vedha-text-main);
+  border-color: var(--vedha-border-medium);
+}
+
+.vedha-btn-secondary:hover {
+  background-color: var(--vedha-bg-neutral);
+  border-color: var(--vedha-text-main);
+  color: var(--vedha-text-main);
+}
+
+/* Rounded Cards */
+.vedha-card {
+  background-color: var(--vedha-surface-white);
+  border: 1px solid var(--vedha-border-subtle);
+  border-radius: var(--vedha-card-radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vedha-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Skip link */
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.screen-reader-text:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  clip: auto;
+  background: #ffffff;
+  color: var(--vedha-red);
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--vedha-red);
+  border-radius: var(--vedha-btn-radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  z-index: 100000;
+  font-weight: 700;
+}
